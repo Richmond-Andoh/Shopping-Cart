@@ -3,9 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
-nav a:hover {
+/* nav .container-fluid{
+   position: sticky;
+   top: 40px;
+   background: orangered;
+} */
+.cart1:hover {
+    background-color: black;
+}
+nav ul a:hover {
     background-color: black;
     border-radius: 5px;
+    text-align: center;
 }
  .cartIcon {
     position: relative;
