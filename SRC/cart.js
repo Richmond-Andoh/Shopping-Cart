@@ -17,7 +17,11 @@ let generateShop = () => {
             let {id, item} = data;
             let search = itemStore.find((x) => x.id === id) || []
             return `
-                <div class="col-sm-12 col-md-4 m-2 col-lg-3">
+                <div class="col-sm-12 col-md-4 col-xl-3 col-xs-8 m-2 col-lg-3"
+                data-aos="fade-right"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                >
                     <div class="card text-dark" style="width: 20rem;">
                         <img src=${search.img} class="card-img-top" alt="...">
                         <div class="card-body text-dark justify-content-evenly">
@@ -118,6 +122,6 @@ let increement = (id) => {
             `
         console.log(total)
     }
-    //removeItem()
+      //clearItems()
  }
  totalCost()

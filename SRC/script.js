@@ -8,7 +8,11 @@ let createStore = () => {
     let { id, name, title, desc, price, img} = item
     let search = container.find((item) => item.id === id)
         return `
-      <div class="col-sm-12 col-md-3 m-2 col-lg-3">
+      <div class="col-sm-12 col-md-6 col-lg-3 m-4 text-center"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+      >
         <div class="card text-dark" style="width: 20rem;">
           <img src=${img} class="card-img-top" alt="...">
           <div class="card-body text-dark">

@@ -23,6 +23,10 @@ nav ul a:hover {
     right: -10px;
 }
 
+#store {
+    grid-template-columns: auto, auto, auto;
+}
+
 .cart-count {
     background: red;
     border-radius: 5px;
