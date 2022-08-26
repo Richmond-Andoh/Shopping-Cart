@@ -17,12 +17,11 @@ let generateShop = () => {
             let { id, item } = data;
             let search = itemStore.find((x) => x.id === id) || []
             return `
-                <div class="col-sm-12 col-md-4 col-xl-3 col-xs-8 m-2 col-lg-3"
-                data-aos="fade-right"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000"
-                >
-                    <div class="card text-dark" style="width: 20rem;">
+                    <div class="card text-center text-dark m-3" style="width: 18rem;"
+                    data-aos="fade-right"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000"
+                    >
                         <img src=${search.img} class="card-img-top" alt="...">
                         <div class="card-body text-dark justify-content-evenly">
                             <div class="justify-content-evenly d-flex">
@@ -41,7 +40,6 @@ let generateShop = () => {
                         </div>
                         
                     </div>
-                </div>
             `
         }).join("")
 
@@ -94,18 +92,19 @@ let update = (id) => {
 }
 
 let removeItem = (id) => {
-    let itemSelected = id;
-    container = container.filter((item) => item.id !== itemSelected.id);
-    generateShop();
-    localStorage.setItem("item", JSON.stringify(container))
-        //console.log(itemSelected.id)
-    totalCost()
-}
-let clearItems = () => {
-    container = []
-    generateShop();
-    localStorage.setItem("item", JSON.stringify(container))
-}
+        let itemSelected = id;
+        container = container.filter((item) => item.id !== itemSelected.id);
+        generateShop();
+        localStorage.setItem("item", JSON.stringify(container))
+            //console.log(itemSelected.id)
+        totalCost()
+    }
+    // let clearItems = () => {
+    //     container = []
+    //     generateShop();
+    //     //totalCost();
+    //     localStorage.setItem("item", JSON.stringify(container))
+    // }
 
 let totalCost = () => {
     if (container.length !== 0) {
@@ -116,11 +115,10 @@ let totalCost = () => {
 
         }).reduce((a, b) => a + b, 0);
         label.innerHTML = `
-              <h3>Total Cost: $ ${total}</h3>
-              <button onclick="clearItems()" type="button" class="btn btn-danger p-2 m-2 fs-3">Clear Items</button>
+              <h3 class="text-white">Total Cost: $ ${total}</h3>
             `
-        console.log(total)
+            //console.log(total)
     }
-    //clearItems()
+
 }
 totalCost()
