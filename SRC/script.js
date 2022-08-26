@@ -1,12 +1,12 @@
 let store = document.getElementById("shirt")
-//console.log(store)
+    //console.log(store)
 
-let container =JSON.parse(localStorage.getItem("item")) || []
+let container = JSON.parse(localStorage.getItem("item")) || []
 
 let createStore = () => {
-  return (store.innerHTML = itemStore.map((item) => {
-    let { id, name, title, desc, price, img} = item
-    let search = container.find((item) => item.id === id)
+    return (store.innerHTML = itemStore.map((item) => {
+        let { id, name, title, desc, price, img } = item
+        let search = container.find((item) => item.id === id)
         return `
       <div class="col-sm-12 col-md-6 col-lg-3 m-4 text-center"
           data-aos="flip-left"
@@ -30,53 +30,53 @@ let createStore = () => {
         </div>
       </div>
     `
-  }))
+    }).join(""))
 }
 createStore();
 
 
 
 let increement = (id) => {
-   let itemSelected = id
-   let search = container.find((item)=> item.id === itemSelected.id)
-   if(search === undefined) {
-    container.push({id: itemSelected.id, item: 1})   
-   } else{
-    search.item += 1
-   }
+    let itemSelected = id
+    let search = container.find((item) => item.id === itemSelected.id)
+    if (search === undefined) {
+        container.push({ id: itemSelected.id, item: 1 })
+    } else {
+        search.item += 1
+    }
 
-  localStorage.setItem("item", JSON.stringify(container))
+    localStorage.setItem("item", JSON.stringify(container))
 
-   update(itemSelected.id)
+    update(itemSelected.id)
 }
 
 
 let decreement = (id) => {
-  let itemSelected = id
-   let search = container.find((item)=> item.id === itemSelected.id)
-   if(search === undefined) return;
-    else if(search.item !== 0) {
-      search.item -= 1
-   } else{
-    return;
-   }
+    let itemSelected = id
+    let search = container.find((item) => item.id === itemSelected.id)
+    if (search === undefined) return;
+    else if (search.item !== 0) {
+        search.item -= 1
+    } else {
+        return;
+    }
 
-   update(itemSelected.id)
+    update(itemSelected.id)
 
-   container = container.filter((item) => item.item !== 0)
-   localStorage.setItem("item", JSON.stringify(container))
+    container = container.filter((item) => item.item !== 0)
+    localStorage.setItem("item", JSON.stringify(container))
 }
 
 let update = (id) => {
-  let search = container.find((item) => item.id === id)
-  document.getElementById(id).innerHTML = search.item
-  totalItem()
+    let search = container.find((item) => item.id === id)
+    document.getElementById(id).innerHTML = search.item
+    totalItem()
 }
 
 
 let totalItem = () => {
- let cartCount = document.getElementById('cartCount');
- cartCount.innerHTML = container.map((item) => item.item).reduce((a, b) => a + b, 0);
+    let cartCount = document.getElementById('cartCount');
+    cartCount.innerHTML = container.map((item) => item.item).reduce((a, b) => a + b, 0);
 }
 
 totalItem()

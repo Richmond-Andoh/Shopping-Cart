@@ -23,7 +23,7 @@ let itemStore = [{
 
     {
         id: "fourth",
-        title: "Air",
+        title: "Air Force",
         price: 40,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, corporis!",
         img: "images/Sneaker-1.jpg"
@@ -40,7 +40,7 @@ let itemStore = [{
         title: "Air Max",
         price: 50,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, corporis!",
-        img: "images/sneaker-3.jpg"
+        img: "images/Sneaker-3.jpg"
     },
 
     {
