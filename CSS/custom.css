@@ -3,29 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
 /* nav .container-fluid{
    position: sticky;
    top: 40px;
    background: orangered;
 } */
+
 .cart1:hover {
     background-color: black;
 }
+
 nav ul a:hover {
-    background-color: black;
+    background-color: rgb(12, 12, 12, );
     border-radius: 5px;
     text-align: center;
 }
- .cartIcon {
+
+.cartIcon {
     position: relative;
     color: white;
     top: 1px;
     right: -10px;
 }
 
-#store {
+
+/* #store {
     grid-template-columns: auto, auto, auto;
-}
+} */
 
 .cart-count {
     background: red;

@@ -3,18 +3,18 @@
 let label = document.getElementById("label")
 let shopping = document.getElementById("shopping")
 
-let container =JSON.parse(localStorage.getItem("item")) || []
+let container = JSON.parse(localStorage.getItem("item")) || []
 
 let totalItem = () => {
     let cartCount = document.getElementById('cartCount');
     cartCount.innerHTML = container.map((item) => item.item).reduce((a, b) => a + b, 0);
-   }  
+}
 totalItem()
 
 let generateShop = () => {
-    if(container.length !== 0){
+    if (container.length !== 0) {
         return shopping.innerHTML = container.map((data) => {
-            let {id, item} = data;
+            let { id, item } = data;
             let search = itemStore.find((x) => x.id === id) || []
             return `
                 <div class="col-sm-12 col-md-4 col-xl-3 col-xs-8 m-2 col-lg-3"
@@ -44,77 +44,76 @@ let generateShop = () => {
                 </div>
             `
         }).join("")
-         
-    }  
-    else{
+
+    } else {
         shopping.innerHTML = `
-        <h2 class="text-dark text-center">No Items Added</h2>
+        <h2 class="text-white text-center">No Items Added</h2>
         <a href="index.html" class="text-center">
-          <button type="button" class="btn btn-danger">Back to Store</button>
+          <button type="button" class="btn btn-danger text-white">Back to Store</button>
         </a>
-        `; 
+        `;
     }
 }
 generateShop()
 
 let increement = (id) => {
     let itemSelected = id
-    let search = container.find((item)=> item.id === itemSelected.id)
-    if(search === undefined) {
-     container.push({id: itemSelected.id, item: 1})   
-    } else{
-     search.item += 1
+    let search = container.find((item) => item.id === itemSelected.id)
+    if (search === undefined) {
+        container.push({ id: itemSelected.id, item: 1 })
+    } else {
+        search.item += 1
     }
     generateShop()
     update(itemSelected.id)
-   localStorage.setItem("item", JSON.stringify(container))
- }
- 
- 
- let decreement = (id) => {
-   let itemSelected = id
-    let search = container.find((item)=> item.id === itemSelected.id)
-    if(search === undefined) return;
-     else if(search.item !== 0) {
-       search.item -= 1
-    } else{
-     return;
+    localStorage.setItem("item", JSON.stringify(container))
+}
+
+
+let decreement = (id) => {
+    let itemSelected = id
+    let search = container.find((item) => item.id === itemSelected.id)
+    if (search === undefined) return;
+    else if (search.item !== 0) {
+        search.item -= 1
+    } else {
+        return;
     }
-    
+
     update(itemSelected.id)
     container = container.filter((item) => item.item !== 0)
     generateShop()
     localStorage.setItem("item", JSON.stringify(container))
- }
- 
- let update = (id) => {
-   let search = container.find((item) => item.id === id)
-   document.getElementById(id).innerHTML = search.item
-   generateShop()
-   totalCost()
- }
+}
 
- let removeItem = (id) => {
+let update = (id) => {
+    let search = container.find((item) => item.id === id)
+    document.getElementById(id).innerHTML = search.item
+    generateShop()
+    totalCost()
+}
+
+let removeItem = (id) => {
     let itemSelected = id;
     container = container.filter((item) => item.id !== itemSelected.id);
     generateShop();
     localStorage.setItem("item", JSON.stringify(container))
-    //console.log(itemSelected.id)
+        //console.log(itemSelected.id)
     totalCost()
- }
-   let clearItems = () => {
+}
+let clearItems = () => {
     container = []
     generateShop();
     localStorage.setItem("item", JSON.stringify(container))
-   }
+}
 
- let totalCost = () => {
-    if(container.length !== 0){
+let totalCost = () => {
+    if (container.length !== 0) {
         let total = container.map((cal) => {
-            let {item, id} = cal
-            let search = itemStore.find((x) => x.id === id)|| []
+            let { item, id } = cal
+            let search = itemStore.find((x) => x.id === id) || []
             return item * search.price
-        
+
         }).reduce((a, b) => a + b, 0);
         label.innerHTML = `
               <h3>Total Cost: $ ${total}</h3>
@@ -122,6 +121,6 @@ let increement = (id) => {
             `
         console.log(total)
     }
-      //clearItems()
- }
- totalCost()
+    //clearItems()
+}
+totalCost()
