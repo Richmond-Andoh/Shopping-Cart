@@ -64,6 +64,7 @@ let increement = (id) => {
     }
     generateShop()
     update(itemSelected.id)
+    totalItem()
     localStorage.setItem("item", JSON.stringify(container))
 }
 
@@ -79,6 +80,7 @@ let decreement = (id) => {
     }
 
     update(itemSelected.id)
+    totalItem()
     container = container.filter((item) => item.item !== 0)
     generateShop()
     localStorage.setItem("item", JSON.stringify(container))
