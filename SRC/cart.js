@@ -97,6 +97,7 @@ let removeItem = (id) => {
         let itemSelected = id;
         container = container.filter((item) => item.id !== itemSelected.id);
         totalItem()
+        totalCost()
         generateShop();
         localStorage.setItem("item", JSON.stringify(container))        
     }
