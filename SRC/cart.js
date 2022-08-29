@@ -96,17 +96,11 @@ let update = (id) => {
 let removeItem = (id) => {
         let itemSelected = id;
         container = container.filter((item) => item.id !== itemSelected.id);
+        totalItem()
         generateShop();
-        localStorage.setItem("item", JSON.stringify(container))
-            //console.log(itemSelected.id)
-        totalCost()
+        localStorage.setItem("item", JSON.stringify(container))        
     }
-    // let clearItems = () => {
-    //     container = []
-    //     generateShop();
-    //     //totalCost();
-    //     localStorage.setItem("item", JSON.stringify(container))
-    // }
+    
 
 let totalCost = () => {
     if (container.length !== 0) {
